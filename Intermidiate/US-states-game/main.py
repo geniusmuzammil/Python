@@ -15,9 +15,7 @@ while len(guessed_states) <= 50:
     guess = screen.textinput(title= f"{len(guessed_states)}/50 correct, Any more Guess?", prompt= "Guess one of the remaining State of US")
     guess = guess.title()
     if guess == "Exit":
-        for state in all_states_data:
-            if state not in guessed_states:
-                states_to_learn.append(state)
+        states_to_learn = [state for state in all_states_data if state not in guessed_states]
         pandas.DataFrame(states_to_learn).to_csv("States_to_learn.csv")
         break
         
